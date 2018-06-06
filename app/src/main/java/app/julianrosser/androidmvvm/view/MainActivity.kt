@@ -1,7 +1,8 @@
-package app.julianrosser.androidmvvm
+package app.julianrosser.androidmvvm.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import app.julianrosser.androidmvvm.R
 
 class MainActivity : AppCompatActivity() {
 
