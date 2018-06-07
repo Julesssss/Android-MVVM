@@ -5,6 +5,8 @@ buildscript {
     ext {
         kotlin_version = '1.2.30'
         designVersion = '27.1.1'
+        junitVersion = '4.12'
+        mockitoVersion = '2.11.0'
     }
 
     repositories {
