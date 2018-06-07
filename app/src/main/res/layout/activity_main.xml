@@ -1,79 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/default_margin"
-    tools:context=".view.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/layoutInputCurrentWage"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/layoutInputNewWage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
+        
+    </data>
 
-        <EditText
-            android:id="@+id/editTextCurrentWage"
-            android:layout_width="match_parent"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/default_margin"
+        tools:context=".view.MainActivity">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutInputCurrentWage"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_current_wage"
-            android:inputType="number"
-            android:maxLength="6"
-            android:selectAllOnFocus="true"
-            tools:text="20000" />
+            app:layout_constraintBottom_toTopOf="@+id/layoutInputNewWage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/editTextCurrentWage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_current_wage"
+                android:inputType="number"
+                android:maxLength="6"
+                android:selectAllOnFocus="true"
+                tools:text="20000" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/layoutInputNewWage"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
-        app:layout_constraintBottom_toTopOf="@+id/textResultDifference"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutInputCurrentWage">
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTextNewWage"
-            android:layout_width="match_parent"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/layoutInputNewWage"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_new_wage"
-            android:inputType="number"
-            android:maxLength="6"
-            android:selectAllOnFocus="true"
-            tools:text="24000" />
+            android:layout_marginTop="@dimen/default_margin"
+            app:layout_constraintBottom_toTopOf="@+id/textResultDifference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutInputCurrentWage">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/editTextNewWage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_new_wage"
+                android:inputType="number"
+                android:maxLength="6"
+                android:selectAllOnFocus="true"
+                tools:text="24000" />
 
-    <TextView
-        android:id="@+id/textResultDifference"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/large_margin"
-        android:gravity="center"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textResultPercentChange"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutInputNewWage"
-        tools:text="4000" />
+        </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textResultPercentChange"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/materialGreen"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textResultDifference"
-        tools:text="25%" />
+        <TextView
+            android:id="@+id/textResultDifference"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:gravity="center"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textResultPercentChange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutInputNewWage"
+            tools:text="4000" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textResultPercentChange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/materialGreen"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textResultDifference"
+            tools:text="25%" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
