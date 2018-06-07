@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android MVVM</string>
+    <string name="hint_current_wage">Current Wage</string>
+    <string name="hint_new_wage">New Wage</string>
 </resources>
