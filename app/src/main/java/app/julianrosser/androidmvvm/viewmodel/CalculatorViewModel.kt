@@ -1,25 +1,35 @@
 package app.julianrosser.androidmvvm.viewmodel
 
+import android.app.Application
 import android.databinding.BaseObservable
-import android.util.Log
+import app.julianrosser.androidmvvm.R
 import app.julianrosser.androidmvvm.model.Calculator
 import app.julianrosser.androidmvvm.model.WageChange
 
-class CalculatorViewModel(val calculator: Calculator = Calculator()): BaseObservable() {
+open class CalculatorViewModel(private val application: Application, val calculator: Calculator = Calculator()): BaseObservable() {
 
     var inputCurrentWage = ""
     var inputNewWage = ""
 
-    var wageCalculation = WageChange()
+    var outputChangeAmount = ""
+    var outputChangePercent = ""
+
+    init {
+        updateOutputs(WageChange())
+    }
+
+    private fun updateOutputs(wageChange: WageChange) {
+        outputChangeAmount = application.getString(R.string.money_amount, wageChange.wageChange)
+        outputChangePercent = application.getString(R.string.percent_amount, wageChange.percentChange)
+    }
 
     fun calculateWageChange() {
 
         inputCurrentWage.toIntOrNull()?.let { currentWageInt ->
             inputNewWage.toIntOrNull()?.let { newWageInt ->
 
-                Log.i("ttt", "values: $inputCurrentWage  -> $inputNewWage ")
-
-                wageCalculation = calculator.calculateWageChange(currentWageInt, newWageInt)
+                updateOutputs(calculator.calculateWageChange(currentWageInt, newWageInt))
+                notifyChange()
             }
         }
     }

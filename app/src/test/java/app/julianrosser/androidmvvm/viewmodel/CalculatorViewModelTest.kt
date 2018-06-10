@@ -1,5 +1,7 @@
 package app.julianrosser.androidmvvm.viewmodel
 
+import android.app.Application
+import app.julianrosser.androidmvvm.R
 import app.julianrosser.androidmvvm.model.Calculator
 import app.julianrosser.androidmvvm.model.WageChange
 import org.junit.Before
@@ -17,27 +19,23 @@ class CalculatorViewModelTest {
     @Mock
     lateinit var mockCalculator: Calculator
 
+    @Mock
+    lateinit var application: Application
+
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        calculatorViewModel = CalculatorViewModel(mockCalculator)
+        stubMoneyResource(0, "£0")
+        stubPercentageResource(0, "0%")
+        calculatorViewModel = CalculatorViewModel(application, mockCalculator)
     }
 
-    @Test
-    fun testCalculateTip() {
-
-        calculatorViewModel = CalculatorViewModel(Calculator())
-
-        calculatorViewModel.inputCurrentWage = "10000"
-        calculatorViewModel.inputNewWage = "20000"
-
-        calculatorViewModel.calculateWageChange()
-
-        assertEquals(10000, calculatorViewModel.wageCalculation.currentWage)
-        assertEquals(20000, calculatorViewModel.wageCalculation.newWage)
-        assertEquals(10000, calculatorViewModel.wageCalculation.wageChange)
-        assertEquals(100, calculatorViewModel.wageCalculation.percentChange)
+    private fun stubMoneyResource(given: Int, returnStub: String) {
+        `when`(application.getString(R.string.money_amount, given)).thenReturn(returnStub)
     }
+
+    private fun stubPercentageResource(given: Int, returnStub: String) =
+        `when`(application.getString(R.string.percent_amount, given)).thenReturn(returnStub)
 
     @Test
     fun testMockedCalculateTip() {
@@ -47,9 +45,13 @@ class CalculatorViewModelTest {
         val stub = WageChange(10000, 20000, 10000, 100)
         `when`(mockCalculator.calculateWageChange(10000, 20000)).thenReturn(stub)
 
+        stubMoneyResource(10000, "£10000")
+        stubPercentageResource(100, "100%")
+
         calculatorViewModel.calculateWageChange()
 
-        assertEquals(stub, calculatorViewModel.wageCalculation)
+        assertEquals("£10000", calculatorViewModel.outputChangeAmount)
+        assertEquals("100%", calculatorViewModel.outputChangePercent)
     }
 
     @Test
