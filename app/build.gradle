@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'org.jetbrains.dokka-android'
 
 android {
     compileSdkVersion 27
@@ -24,6 +25,11 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+    dokka {
+        outputFormat = 'gfm'
+        outputDirectory = "$buildDir/javadoc"
     }
 }
 

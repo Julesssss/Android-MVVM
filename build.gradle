@@ -10,19 +10,23 @@ buildscript {
         mockitoVersion = '2.11.0'
         constraintVersion = '1.1.2'
         archComponentVersion = '1.1.1'
+        dokkaVersion = '0.9.17'
     }
 
     repositories {
         google()
         jcenter()
     }
+
     dependencies {
         classpath "com.android.tools.build:gradle:$androidPlugin"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+
 }
 
 allprojects {
