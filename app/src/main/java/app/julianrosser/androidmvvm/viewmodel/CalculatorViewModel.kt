@@ -8,9 +8,11 @@ import app.julianrosser.androidmvvm.model.WageChange
 
 open class CalculatorViewModel(private val application: Application, val calculator: Calculator = Calculator()): BaseObservable() {
 
+    // inbound binding
     var inputCurrentWage = ""
     var inputNewWage = ""
 
+    // outbound binding
     var outputChangeAmount = ""
     var outputChangePercent = ""
 
@@ -23,8 +25,10 @@ open class CalculatorViewModel(private val application: Application, val calcula
         outputChangePercent = application.getString(R.string.percent_amount, wageChange.percentChange)
     }
 
+    /**
+     * calculates wage change and percentage, updates variables and notifies view of change
+     */
     fun calculateWageChange() {
-
         inputCurrentWage.toIntOrNull()?.let { currentWageInt ->
             inputNewWage.toIntOrNull()?.let { newWageInt ->
 

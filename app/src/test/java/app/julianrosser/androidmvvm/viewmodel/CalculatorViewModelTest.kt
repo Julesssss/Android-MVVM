@@ -30,6 +30,9 @@ class CalculatorViewModelTest {
         calculatorViewModel = CalculatorViewModel(application, mockCalculator)
     }
 
+    /**
+     *  prepares mocked resource responses
+     */
     private fun stubMoneyResource(given: Int, returnStub: String) {
         `when`(application.getString(R.string.money_amount, given)).thenReturn(returnStub)
     }
@@ -37,8 +40,9 @@ class CalculatorViewModelTest {
     private fun stubPercentageResource(given: Int, returnStub: String) =
         `when`(application.getString(R.string.percent_amount, given)).thenReturn(returnStub)
 
+
     @Test
-    fun testMockedCalculateTip() {
+    fun `test mocked calculateTip()`() {
         calculatorViewModel.inputCurrentWage = "10000"
         calculatorViewModel.inputNewWage = "20000"
 
@@ -50,25 +54,14 @@ class CalculatorViewModelTest {
 
         calculatorViewModel.calculateWageChange()
 
+        // check that the VM's output values have been calculated correctly
+        verify(mockCalculator, atLeastOnce()).calculateWageChange(anyInt(), anyInt())
         assertEquals("£10000", calculatorViewModel.outputChangeAmount)
         assertEquals("100%", calculatorViewModel.outputChangePercent)
     }
 
     @Test
-    fun testBadCurrentWageInput() {
-        calculatorViewModel.inputCurrentWage = "10000"
-        calculatorViewModel.inputNewWage = ""
-
-        val stub = WageChange(10000, 20000, 10000, 100)
-        `when`(mockCalculator.calculateWageChange(10000, 20000)).thenReturn(stub)
-
-        calculatorViewModel.calculateWageChange()
-
-        verify(mockCalculator, never()).calculateWageChange(anyInt(), anyInt())
-    }
-
-    @Test
-    fun testBadNewWageInput() {
+    fun `test bad new wage input`() {
         calculatorViewModel.inputCurrentWage = ""
         calculatorViewModel.inputNewWage = "20000"
 
@@ -77,6 +70,21 @@ class CalculatorViewModelTest {
 
         calculatorViewModel.calculateWageChange()
 
+        // check that the calculator was not called due to bad input
+        verify(mockCalculator, never()).calculateWageChange(anyInt(), anyInt())
+    }
+
+    @Test
+    fun `test bad current wage input`() {
+        calculatorViewModel.inputCurrentWage = "10000"
+        calculatorViewModel.inputNewWage = ""
+
+        val stub = WageChange(10000, 20000, 10000, 100)
+        `when`(mockCalculator.calculateWageChange(10000, 20000)).thenReturn(stub)
+
+        calculatorViewModel.calculateWageChange()
+
+        // check that the calculator was not called due to bad input
         verify(mockCalculator, never()).calculateWageChange(anyInt(), anyInt())
     }
 
