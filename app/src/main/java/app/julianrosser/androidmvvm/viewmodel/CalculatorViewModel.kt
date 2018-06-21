@@ -6,7 +6,7 @@ import app.julianrosser.androidmvvm.R
 import app.julianrosser.androidmvvm.model.Calculator
 import app.julianrosser.androidmvvm.model.WageChange
 
-open class CalculatorViewModel(private val application: Application, val calculator: Calculator = Calculator()): BaseObservable() {
+open class CalculatorViewModel(private val application: Application, private val calculator: Calculator = Calculator()): BaseObservable() {
 
     // inbound binding
     var inputCurrentWage = ""
