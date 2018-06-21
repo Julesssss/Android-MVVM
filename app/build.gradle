@@ -36,6 +36,8 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$designVersion"
     implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
 
+    implementation "android.arch.lifecycle:extensions:$archComponentVersion"
+
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

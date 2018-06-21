@@ -9,6 +9,7 @@ buildscript {
         junitVersion = '4.12'
         mockitoVersion = '2.11.0'
         constraintVersion = '1.1.2'
+        archComponentVersion = '1.1.1'
     }
 
     repositories {
