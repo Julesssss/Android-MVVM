@@ -1,12 +1,12 @@
 package app.julianrosser.androidmvvm.viewmodel
 
 import android.app.Application
-import android.databinding.BaseObservable
 import app.julianrosser.androidmvvm.R
 import app.julianrosser.androidmvvm.model.Calculator
 import app.julianrosser.androidmvvm.model.WageChange
 
-open class CalculatorViewModel(private val application: Application, private val calculator: Calculator = Calculator()): BaseObservable() {
+open class CalculatorViewModel @JvmOverloads constructor (
+        app: Application, private val calculator: Calculator = Calculator()): ObservableViewModel(app) {
 
     // inbound binding
     var inputCurrentWage = ""
@@ -21,8 +21,8 @@ open class CalculatorViewModel(private val application: Application, private val
     }
 
     private fun updateOutputs(wageChange: WageChange) {
-        outputChangeAmount = application.getString(R.string.money_amount, wageChange.wageChange)
-        outputChangePercent = application.getString(R.string.percent_amount, wageChange.percentChange)
+        outputChangeAmount = app().getString(R.string.money_amount, wageChange.wageChange)
+        outputChangePercent = app().getString(R.string.percent_amount, wageChange.percentChange)
     }
 
     /**
