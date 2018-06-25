@@ -4,7 +4,7 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.databinding.Observable
 import android.databinding.PropertyChangeRegistry
-import com.android.databinding.library.baseAdapters.BR
+import app.julianrosser.androidmvvm.BR
 
 /**
  * Base ViewModel which persists state across device rotation and handles observables.
@@ -14,22 +14,31 @@ import com.android.databinding.library.baseAdapters.BR
  */
 abstract class ObservableViewModel(app: Application) : AndroidViewModel(app), Observable {
 
+    /**
+     * Lazily instantiated list of callbackRegistry which will be notified when a properties value has changed.
+     */
     @delegate:Transient
-    private val mCallbacks: PropertyChangeRegistry by lazy { PropertyChangeRegistry() }
-    
+    private val callbackRegistry: PropertyChangeRegistry by lazy { PropertyChangeRegistry() }
+
+    /**
+     * Add an observable callback to the list
+     */
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        mCallbacks.add(callback)
+        callbackRegistry.add(callback)
     }
 
+    /**
+     * Remove an observable callback to the list
+     */
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        mCallbacks.add(callback)
+        callbackRegistry.add(callback)
     }
 
     /**
      * Notify all properties of changes
      */
     fun notifyChange() {
-        mCallbacks.notifyChange(this, BR._all)
+        callbackRegistry.notifyChange(this, BR._all)
     }
 
     /**
