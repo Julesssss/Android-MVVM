@@ -13,19 +13,21 @@ open class CalculatorViewModel @JvmOverloads constructor (
         app: Application, private val calculator: Calculator = Calculator()): ObservableViewModel(app) {
 
     /**
-     * Inbound bindings
+     * Inbound binding: Current wage taken from EditText
      */
-    // Current wage taken from EditText
     var inputCurrentWage = ""
-    // New wage taken from EditText
+    /**
+     * Inbound binding: New wage taken from EditText
+     */
     var inputNewWage = ""
 
     /**
-     * Outbound bindings
+     * Outbound bindings: Difference between current and new wage.
      */
-    // Difference between current and new wage.
     var outputChangeAmount = ""
-    // Percentage of wage increase or decrease.
+    /**
+     * Outbound bindings: Percentage of wage increase or decrease.
+     */
     var outputChangePercent = ""
 
     /**
