@@ -46,7 +46,7 @@ class CalculatorViewModelTest {
         calculatorViewModel.inputCurrentWage = "10000"
         calculatorViewModel.inputNewWage = "20000"
 
-        val stub = WageChange(10000, 20000, 10000, 100)
+        val stub = WageChange("testA", 10000, 20000, 10000, 100)
         `when`(mockCalculator.calculateWageChange(10000, 20000)).thenReturn(stub)
 
         stubMoneyResource(10000, "£10000")
@@ -65,7 +65,7 @@ class CalculatorViewModelTest {
         calculatorViewModel.inputCurrentWage = ""
         calculatorViewModel.inputNewWage = "20000"
 
-        val stub = WageChange(10000, 20000, 10000, 100)
+        val stub = WageChange("testB", 10000, 20000, 10000, 100)
         `when`(mockCalculator.calculateWageChange(10000, 20000)).thenReturn(stub)
 
         calculatorViewModel.calculateWageChange()
@@ -79,7 +79,7 @@ class CalculatorViewModelTest {
         calculatorViewModel.inputCurrentWage = "10000"
         calculatorViewModel.inputNewWage = ""
 
-        val stub = WageChange(10000, 20000, 10000, 100)
+        val stub = WageChange("testC", 10000, 20000, 10000, 100)
         `when`(mockCalculator.calculateWageChange(10000, 20000)).thenReturn(stub)
 
         calculatorViewModel.calculateWageChange()

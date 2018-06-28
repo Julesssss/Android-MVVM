@@ -19,7 +19,7 @@ class CalculatorTest {
         val currentWage = 20000
         val newWage = 25000
 
-        val testCalc = WageChange(currentWage, newWage, wageChange = 5000, percentChange = 25)
+        val testCalc = WageChange(currentWage = currentWage, newWage = newWage, wageChange = 5000, percentChange = 25)
 
         Assert.assertEquals(testCalc, calculator.calculateWageChange(currentWage, newWage))
     }
@@ -30,7 +30,7 @@ class CalculatorTest {
         val currentWage = 20000
         val newWage = 20000
 
-        val testCalc = WageChange(currentWage, newWage, wageChange = 0, percentChange = 0)
+        val testCalc = WageChange(currentWage = currentWage, newWage = newWage, wageChange = 0, percentChange = 0)
 
         Assert.assertEquals(testCalc, calculator.calculateWageChange(currentWage, newWage))
     }
