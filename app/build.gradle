@@ -37,15 +37,20 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
+    // Support
     implementation "com.android.support:appcompat-v7:$designVersion"
     implementation "com.android.support:design:$designVersion"
     implementation "com.android.support:appcompat-v7:$designVersion"
     implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
 
+    // Architecture components
     implementation "android.arch.lifecycle:extensions:$archComponentVersion"
 
+    // Testing
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "android.arch.core:core-testing:$archComponentVersion"
+
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
