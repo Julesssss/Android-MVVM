@@ -1,9 +1,16 @@
 package app.julianrosser.androidmvvm.model
 
+import android.arch.lifecycle.LiveData
 import kotlin.math.roundToInt
 
-class Calculator {
+/**
+ * Model class for performing calculations. Has a dependency on Repository and quick access functions.
+ */
+class Calculator(private val repository: CalculationRepository = CalculationRepository()) {
 
+    /**
+     * Takes current and new wage inputs, calculates any useful information and outputs {@link WageChange} object.
+     */
     fun calculateWageChange(currentWage: Int, newWage: Int): WageChange {
 
         val change: Int = newWage - currentWage
@@ -28,5 +35,19 @@ class Calculator {
                 percentChange = percentChangeRounded
         )
     }
+
+    /*
+     * Repository helper functions
+     */
+
+    fun saveWageCalulation(wageChange: WageChange) {
+        repository.saveWageChange(wageChange)
+    }
+
+    fun loadWageCalculationByName(wageChangeName: String): WageChange? =
+            repository.loadWageChangeByName(wageChangeName)
+
+    fun loadObservableWageCalculations(): LiveData<List<WageChange>> =
+            repository.loadObservableWageChanges()
 
 }
