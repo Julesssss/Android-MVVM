@@ -7,5 +7,8 @@
 
     <string name="money_amount">£%1d</string>
     <string name="percent_amount">%1d%%</string>
+    <string name="save_dialog_hint">Description</string>
+    <string name="save_dialog_button_cancel">Cancel</string>
+    <string name="save_dialog_button_positive">Save</string>
 
 </resources>
