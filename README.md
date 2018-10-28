@@ -14,6 +14,8 @@ MVVM
 
 [Mockito](http://site.mockito.org/) (2.11.0)
 
+[Espresso](https://developer.android.com/training/testing/espresso/) (3.0.2)
+
 ### Documentation
 
 The following docs were auto generated with the [Dokka](https://github.com/Kotlin/dokka) plugin
